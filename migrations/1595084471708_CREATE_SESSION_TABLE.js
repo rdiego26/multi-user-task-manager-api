@@ -11,7 +11,7 @@ exports.up = pgm => {
 							primary key,
 					user_id uuid not null
 						constraint fk_session_user
-							references "user"
+							references "user",
 					token text not null
 						constraint session_token_key
 							unique,
