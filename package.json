@@ -4,9 +4,10 @@
   "description": "API for multi user task manager",
   "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "nodemon src/index.js",
-    "test": "npm install && mocha test/**/*.js --reporter spec --exit"
+    "start": "npm run migrate up && node src/index.js",
+    "dev": "npm run migrate up && nodemon src/index.js",
+    "test": "npm install && mocha test/**/*.js --reporter spec --exit",
+    "migrate": "./node_modules/node-pg-migrate/bin/node-pg-migrate"
   },
   "repository": {
     "type": "git",
