@@ -37,6 +37,9 @@ class TaskModel extends Sequelize.Model {
                     create: {
                         attributes: ['projectId', 'description'],
                     },
+                    update: {
+                      attributes: ['description', 'finishedAt'],
+                    },
                     find: {
                         attributes: ['projectId', 'description', 'createdAt', 'finishedAt'],
                     },
