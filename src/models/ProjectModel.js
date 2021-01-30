@@ -39,6 +39,9 @@ class ProjectModel extends Sequelize.Model {
                     create: {
                         attributes: ['userId', 'name'],
                     },
+                    update: {
+                      attributes: ['name', 'deletedAt'],
+                    },
                     find: {
                         attributes: ['userId', 'name', 'createdAt', 'deletedAt'],
                     },
