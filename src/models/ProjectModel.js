@@ -1,9 +1,11 @@
 const Sequelize = require('sequelize');
+const connection = require('../utils/poolConnection');
+const TaskModel = require('./TaskModel').init(connection, Sequelize.DataTypes);
 
 class ProjectModel extends Sequelize.Model {
     static init(sequelize, DataTypes) {
 
-        return super.init(
+	    let model = super.init(
             {
                 id: {
                     type: Sequelize.UUID, primaryKey: true, defaultValue: DataTypes.UUIDV4,
@@ -43,6 +45,10 @@ class ProjectModel extends Sequelize.Model {
                 },
             }
         );
+
+	    model.hasMany(TaskModel, { as: 'tasks' });
+
+	    return model;
     }
 }
 
