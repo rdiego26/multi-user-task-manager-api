@@ -1,11 +1,11 @@
-const HTTP_STATUS = require('http-status-codes');
+const { StatusCodes } = require('http-status-codes');
 
 const appData = require('../../package.json');
 
 module.exports = {
   checkHealth: (req, res) => {
     res
-      .status(HTTP_STATUS.OK)
+      .status(StatusCodes.OK)
       .json({
         result: 'I am alive!',
         version: appData.version,

@@ -7,7 +7,8 @@
     "start": "npm run migrate up && node src/index.js",
     "dev": "npm run migrate up && nodemon src/index.js",
     "test": "npm install && mocha test/**/*.js --reporter spec --exit",
-    "migrate": "./node_modules/node-pg-migrate/bin/node-pg-migrate"
+    "migrate": "./node_modules/node-pg-migrate/bin/node-pg-migrate",
+    "coverage": "npm install && nyc --reporter=html mocha test/**/*.js --timeout=3000 --exit"
   },
   "repository": {
     "type": "git",
@@ -41,6 +42,7 @@
     "faker": "^5.2.0",
     "mocha": "^8.2.1",
     "nodemon": "^2.0.7",
+    "nyc": "^15.1.0",
     "sinon": "^9.2.4",
     "supertest": "^6.1.3"
   }
