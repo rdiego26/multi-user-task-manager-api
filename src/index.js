@@ -11,7 +11,7 @@ const cors = require('cors');
 const securityMiddleware = require('../src/middlewares/securityMiddleware');
 const jsonSchemaValidationMiddleware = require('../src/middlewares/jsonSchemaValidationMiddleware');
 
-const routes = require('./routes/healthCheckRoutes');
+const allRoutes = require('./routes/');
 
 const app = express();
 app.set('port', constants.server.port);
@@ -25,7 +25,7 @@ app.use(compression());
 app.all('/api/*', cors());
 app.all('/api/*', securityMiddleware.checkToken);
 
-routes(app);
+allRoutes(app);
 
 // This middleware should be the last
 app.use(jsonSchemaValidationMiddleware);
