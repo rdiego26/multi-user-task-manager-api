@@ -7,7 +7,7 @@ const sinon = require("sinon");
 const UserService = require('../../src/services').UserService;
 const SessionService = require('../../src/services').SessionService;
 
-describe('Login Controller', () => {
+describe('Session Controller', () => {
 
 	const LOGIN_PATH = '/api/login';
 
