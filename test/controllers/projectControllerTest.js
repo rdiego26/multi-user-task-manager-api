@@ -23,14 +23,14 @@ describe('Project Controller', () => {
 		id: faker.random.uuid(),
 		userId: mockedUser.id,
 		token: faker.random.alphaNumeric(10),
-		expiresAt: dayJs().add(1, 'minutes').format('YYYY-MM-DDTHH:mm:ssZ')
+		expiresAt: dayJs().add(1, 'minutes').format('YYYY-MM-DDTHH:mm:ss')
 	};
 
 	const mockedProject = {
 		id: faker.random.uuid(),
 		userId: mockedUser.id,
 		name: faker.lorem.sentence(),
-		createdAt: dayJs().format('YYYY-MM-DDTHH:mm:ssZ'),
+		createdAt: dayJs().format('YYYY-MM-DDTHH:mm:ss'),
 		deletedAt: null,
 	};
 
