@@ -9,9 +9,11 @@ const SessionService = require('../../src/services').SessionService;
 
 describe('Login Controller', () => {
 
+	const LOGIN_PATH = '/api/login';
+
 	it('should receive bad request when send empty body', async () => {
 		await request(app)
-				.post('/api/login')
+				.post(LOGIN_PATH)
 				.send({})
 				.set('Accept', 'application/json')
 				.expect('Content-Type', /json/)
@@ -20,7 +22,7 @@ describe('Login Controller', () => {
 
 	it('should receive bad request when send only email', async () => {
 		let response = await request(app)
-			.post('/api/login')
+			.post(LOGIN_PATH)
 			.send({ email: faker.internet.email() })
 			.set('Accept', 'application/json')
 			.expect('Content-Type', /json/)
@@ -32,7 +34,7 @@ describe('Login Controller', () => {
 
 	it('should receive bad request when send only password', async () => {
 		let response = await request(app)
-			.post('/api/login')
+			.post(LOGIN_PATH)
 			.send({ password: faker.internet.password() })
 			.set('Accept', 'application/json')
 			.expect('Content-Type', /json/)
@@ -42,11 +44,11 @@ describe('Login Controller', () => {
 		assert.propertyVal(response.body?.errors[0], 'message', "should have required property 'email'");
 	});
 
-	it('should receive properly response when send valid data', async () => {
+	it('should receive properly response when send valid data and nonexistent user', async () => {
 		let userStub = sinon.stub(UserService, 'findWithCredentials').returns(null);
 
 		await request(app)
-			.post('/api/login')
+			.post(LOGIN_PATH)
 			.send({ email: faker.internet.email(), password: faker.internet.password() })
 			.set('Accept', 'application/json')
 			.expect('Content-Type', /json/)
@@ -73,7 +75,7 @@ describe('Login Controller', () => {
 		let sessionStub = sinon.stub(SessionService, 'create').returns(mockedSession);
 
 		let response = await request(app)
-			.post('/api/login')
+			.post(LOGIN_PATH)
 			.send({ email: mockedUser.email, password: mockedUser.password })
 			.set('Accept', 'application/json')
 			.expect('Content-Type', /json/)
