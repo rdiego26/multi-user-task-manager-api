@@ -6,6 +6,7 @@ module.exports = (app) => {
 	const loginSchema = require('../jsonSchemas/login');
 
   router.post('/api/login', validate({ body: loginSchema }), controller.findByCredentials);
+	router.get('/api/logout', controller.logout);
 
   app.use(router);
 };

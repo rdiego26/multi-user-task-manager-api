@@ -24,4 +24,16 @@ module.exports = {
     }
   },
 
+	logout: async (req, res) => {
+		try {
+		  const sessionToken = req.headers['x-access-token'];
+			await SessionService.deleteByToken(sessionToken);
+
+			return res.status(StatusCodes.OK).json(null);
+		} catch (error) {
+			console.log(error);
+			return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error);
+		}
+	},
+
 };

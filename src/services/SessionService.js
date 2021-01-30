@@ -72,8 +72,8 @@ class SessionService {
       });
     }
 
-	async deleteByUserId(userId) {
-		const query = { userId };
+	async deleteByToken(token) {
+		const query = { token };
 		return this.sessionModel.destroy({ where: query });
 	}
 
