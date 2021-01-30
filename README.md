@@ -1,5 +1,7 @@
-# muti-user-task-manager-api
-API to multi user task manager
+# Multi user task manager API
+API to multi user task manager.
+
+![Octopus](https://thumbs.dreamstime.com/b/angry-black-silhouettes-octopus-cartoon-mascot-character-angry-black-silhouettes-octopus-cartoon-mascot-character-120324876.jpg)
 
 # Steps to run(for dev)
 1. Resolve dependencies `npm install` .
