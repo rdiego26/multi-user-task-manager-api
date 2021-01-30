@@ -8,6 +8,9 @@ const bodyParser = require('body-parser');
 const compression = require('compression');
 const cors = require('cors');
 
+const securityMiddleware = require('../src/middlewares/securityMiddleware');
+const jsonSchemaValidationMiddleware = require('../src/middlewares/jsonSchemaValidationMiddleware');
+
 const routes = require('./routes/healthCheckRoutes');
 
 const app = express();
@@ -20,8 +23,12 @@ app.use(compression());
 
 
 app.all('/api/*', cors());
+app.all('/api/*', securityMiddleware.checkToken);
 
 routes(app);
+
+// This middleware should be the last
+app.use(jsonSchemaValidationMiddleware);
 
 http.createServer(app).listen(app.get('port'), () => {
 	console.info('%s listening on port %d', app.get('title'), app.get('port'));
