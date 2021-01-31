@@ -19,7 +19,7 @@ class UserService {
 
   async findWithCredentials(email, password) {
     const query = {
-        email, password: crypto.createHmac(AlgorithmEnum.SHA_256, password).digest('hex'),
+        email, password: crypto.createHmac(AlgorithmEnum.SHA_256, password).digest('hex'), active: true
     };
 
     return this.userModel
