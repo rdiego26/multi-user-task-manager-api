@@ -42,6 +42,9 @@ class ProjectModel extends Sequelize.Model {
                     update: {
                       attributes: ['name', 'deletedAt'],
                     },
+                    relation: {
+                      attributes: ['id', 'name', 'createdAt', 'deletedAt'],
+                    },
                     find: {
                         attributes: ['userId', 'name', 'createdAt', 'deletedAt'],
                     },
@@ -49,7 +52,7 @@ class ProjectModel extends Sequelize.Model {
             }
         );
 
-	    model.hasMany(TaskModel, { as: 'tasks' });
+	    model.hasMany(TaskModel, { as: 'tasks', foreignKey: 'project_id', sourceKey: 'id' });
 
 	    return model;
     }

@@ -47,6 +47,9 @@ class UserModel extends Sequelize.Model {
 					create: {
 						attributes: ['name', 'email', 'password'],
 					},
+					relation: {
+						attributes: ['name', 'email', 'createdAt'],
+					},
 					find: {
 						attributes: ['id', 'name', 'email', 'createdAt'],
 					}

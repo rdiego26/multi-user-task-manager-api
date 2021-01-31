@@ -4,6 +4,7 @@ const Sequelize = require('sequelize');
 const connection = require('../utils/poolConnection');
 const UserModel = require('../models/UserModel').init(connection, Sequelize.DataTypes);
 const ProjectModel = require('../models/ProjectModel').init(connection, Sequelize.DataTypes);
+const TaskModel = require('../models/TaskModel').init(connection, Sequelize.DataTypes);
 const { Op } = Sequelize;
 
 class SessionService {
@@ -19,12 +20,20 @@ class SessionService {
 			.findOne({
 				where: query,
 				include: [{
-					model: UserModel,
+					model: UserModel.scope('relation'),
 					as: 'user',
 					include: [
 						{
-							model: ProjectModel,
+							model: ProjectModel.scope('relation'),
 							as: 'projects',
+							order: [['name', 'ASC']],
+							include: [
+								{
+									model: TaskModel,
+									as: 'tasks',
+									order: [['description', 'ASC']],
+								}
+							]
 						}
 					],
 				}],

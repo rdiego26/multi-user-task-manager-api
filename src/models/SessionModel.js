@@ -36,7 +36,7 @@ class SessionModel extends Sequelize.Model {
 						attributes: ['userId', 'token', 'expiresAt'],
 					},
 					find: {
-						attributes: ['userId', 'token', 'expiresAt'],
+						attributes: ['token', 'expiresAt'],
 					},
 				}
 			}
