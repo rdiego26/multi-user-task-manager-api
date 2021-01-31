@@ -190,8 +190,6 @@ describe('Task Controller', () => {
 				.expect('Content-Type', /json/)
 				.expect(StatusCodes.OK);
 
-			console.log(JSON.stringify(result.body));
-
 			assert.equal(result.body.id, mockedTask.id);
 			assert.equal(result.body.description, mockedTask.description);
 

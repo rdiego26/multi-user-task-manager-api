@@ -182,8 +182,6 @@ describe('Project Controller', () => {
 				.expect('Content-Type', /json/)
 				.expect(StatusCodes.OK);
 
-			console.log(JSON.stringify(result.body));
-
 			assert.equal(result.body.id, mockedProject.id);
 			assert.equal(result.body.name, mockedProject.name);
 

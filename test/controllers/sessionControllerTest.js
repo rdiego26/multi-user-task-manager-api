@@ -115,8 +115,6 @@ describe('Session Controller', () => {
 				.expect('Content-Type', /json/)
 				.expect(StatusCodes.OK);
 
-			console.log(JSON.stringify(response.body));
-
 			await sessionFindActiveTokenStub.restore();
 			await sessionIncrementStub.restore();
 			await sessionServiceRemoveByTokenStub.restore();
