@@ -13,3 +13,12 @@ API to multi user task manager.
 - To generate coverage report: `docker-compose run app npm run coverage`
 - To only run tests: `docker-compose run app npm test`
 - To create a migration: `npm run migrate create NAME_OF_YOUR_MIGRATION` - Locally the migrations runs when container up
+
+---
+
+# Considerations / Next Improvements / Questions
+- Maybe block user(set `active=false`) after x attempts for login ?
+- Integrate with some log aggregation tool, like Humio or Splunk
+- Integrate with some APM tool, like New Relic or DataDog(I know, Datadog have many features as well)
+- Implement a CI/CD workflow
+- Replace json schema with Typescript?
