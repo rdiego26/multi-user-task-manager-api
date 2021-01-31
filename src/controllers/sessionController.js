@@ -15,8 +15,6 @@ module.exports = {
 
       if (fetchedUser) {
           result = await SessionService.create(fetchedUser.id);
-      } else {
-      	result = { message: 'No user found with the data provided!' }
       }
 
       return res.status(code).json(result);
