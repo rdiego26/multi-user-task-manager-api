@@ -15,6 +15,7 @@ module.exports = {
 
       if (fetchedUser) {
           result = await SessionService.create(fetchedUser.id);
+          result.user = fetchedUser;
       }
 
       return res.status(code).json(result);
