@@ -17,6 +17,7 @@ API to multi user task manager.
 ---
 
 # Considerations / Next Improvements / Questions
+- Create a pattern response for errors (JsonSchema, Sequelize and application)
 - Maybe block user(set `active=false`) after x attempts for login ?
 - Integrate with some log aggregation tool, like Humio or Splunk
 - Integrate with some APM tool, like New Relic or DataDog(I know, Datadog have many features as well)
