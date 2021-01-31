@@ -6,6 +6,7 @@ module.exports = (app) => {
 	const createSchema = require('../jsonSchemas/user/create');
 
   router.post('/api/user', validate({ body: createSchema }), controller.create);
+	router.get('/api/user/me', controller.me);
 
   app.use(router);
 };

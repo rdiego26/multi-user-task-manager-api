@@ -3,6 +3,7 @@ const uuid = require('uuid-v4');
 const Sequelize = require('sequelize');
 const connection = require('../utils/poolConnection');
 const UserModel = require('../models/UserModel').init(connection, Sequelize.DataTypes);
+const ProjectModel = require('../models/ProjectModel').init(connection, Sequelize.DataTypes);
 const { Op } = Sequelize;
 
 class SessionService {
@@ -20,6 +21,12 @@ class SessionService {
 				include: [{
 					model: UserModel,
 					as: 'user',
+					include: [
+						{
+							model: ProjectModel,
+							as: 'projects',
+						}
+					],
 				}],
 			});
 
