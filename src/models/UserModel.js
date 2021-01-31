@@ -30,6 +30,9 @@ class UserModel extends Sequelize.Model {
 				createdAt: {
 					type: DataTypes.DATE, field: 'created_at',
 				},
+				active: {
+					type: DataTypes.BOOLEAN, allowNull: false, defaultValue: true,
+				},
 			},
 			{
 				sequelize,
